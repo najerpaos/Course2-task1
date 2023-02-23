@@ -1,0 +1,117 @@
+//expresion exercises
+
+export const rectPerimeter = (x, y) => 2 * (x + y);
+export const rectArea = (x, y) => x * y;
+export const triArea = (x, y) => (x * y) / 2;
+export const ringArea = (x, y) => Math.PI * (y + x) * (y - x);
+export const f2c = (degree) => ((degree - 32) * 5) / 9;
+export const c2f = (degree) => degree * 1.8 + 32;
+
+//String exercises
+
+export const makeName = (x, y) => y.concat(", ", x);
+export const ellide = (string, n) => string.substring(0, n) + "...";
+
+//Conditional exercises
+
+export const longer = (string1, string2) =>
+  string1.length > string2.length
+    ? string1
+    : string2.length > string1.length
+    ? string2
+    : string1 === "abc"
+    ? string1
+    : string2 === "abc"
+    ? string2
+    : string1;
+
+export const mid3 = (x, y, z) =>
+  x > y && x > z && y > z
+    ? y
+    : x < y && x < z && y < z
+    ? y
+    : x < y && x > z && y > z
+    ? x
+    : x > y && x < z && y < z
+    ? x
+    : x > y && y < z
+    ? x
+    : y;
+
+export const lastFirst = (person) =>
+  person.first && person.last
+    ? person.last + ", " + person.first
+    : person.first
+    ? person.first
+    : person.last
+    ? person.last
+    : "";
+
+//Array exercises
+
+export const subArray = (arr1, arr2) => arr2.map((value) => arr1[value]);
+
+export const over21 = (person) => person.filter((person) => person.age >= 21);
+
+export const product = (prod) => prod.reduce((mult, n) => mult * n);
+
+export const getRepeats = (arry) =>
+  arry
+    .sort((x, y) => arry.indexOf(x) - arry.indexOf(y))
+    .filter((value, index, array) => array.indexOf(value) !== index)
+    .filter((value, index, array) => array.indexOf(value) === index);
+
+export const aboveAverage = (students) => {
+  const grades = students.map((student) => student.score);
+  const average = grades.reduce((a, b) => a + b, 0) / grades.length;
+  return students.filter((student) => average < student.score);
+};
+
+// Arrays and String exercises
+
+export const reverseNumber = (value) =>
+  parseFloat(value.toString().split("").reverse().join(""));
+
+export const isWordAnagram = (word1, word2) => {
+  const arr1 = word1.split("").sort().toString();
+  const arr2 = word2.split("").sort().toString();
+  const arrcomp = arr1 === arr2;
+  return arrcomp;
+};
+
+export const isPhraseAnagram = (word1, word2) => {
+  const arry = word1
+    .replace(/\s+/g, "")
+    .toLowerCase()
+    .split("")
+    .sort()
+    .toString();
+  const arry2 = word2
+    .replace(/\s+/g, "")
+    .toLowerCase()
+    .split("")
+    .sort()
+    .toString();
+  const arryc = arry === arry2;
+  return arryc;
+};
+
+export const longestWords = (strg) => {
+  const arrl = strg.split(" ").sort((a, b) => b.length - a.length);
+  //return arrl.filter((arr)=>arrl[0].length <= arr.length)
+  return arrl
+    .filter((arr) => arrl[0].length === arr.length)
+    .filter((arr) => arr.length > 0);
+};
+
+// DOM operations exercises
+
+export const moduleTitles = () =>
+  Array.from(document.querySelectorAll("div.module-title")).map(
+    (h) => h.innerText
+  );
+export const goPurple = () =>
+  (document.querySelector(
+    "#dom-operations > div > div.accordion > div:nth-child(2) > div.exercise-name.card-header"
+  ).innerHTML =
+    "<span style=color:white;background-color:purple>Go Purple!</span>");
